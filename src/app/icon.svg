@@ -1,0 +1,10 @@
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="7" fill="#1c1917"/>
+  <path
+    fill-rule="evenodd"
+    fill="#faf9f7"
+    d="M7 26 L7 6 L12 6 C22 6 22 19 12 19 L7 19 Z
+       M11 9.5 C19 9.5 19 15.5 11 15.5 Z"
+  />
+  <rect x="21" y="22" width="4" height="2" rx="1" fill="#faf9f7" opacity="0.35"/>
+</svg>
