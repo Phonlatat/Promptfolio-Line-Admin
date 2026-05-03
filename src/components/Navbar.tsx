@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/about", label: "About Me" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ username }: { username?: string | null }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -86,15 +86,27 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* ── Login shortcut ── */}
+        {/* ── Auth button ── */}
         <div className="hidden md:flex">
-          <Link
-            href="/login"
-            className="flex items-center gap-1.5 rounded-md border border-stone-300 px-3.5 py-1.5 text-[13px] font-medium text-stone-700 transition-all duration-200 hover:border-stone-400 hover:bg-stone-100/70"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-            Login
-          </Link>
+          {username ? (
+            <Link
+              href="/admin"
+              className="flex items-center gap-2 rounded-md border border-stone-300 px-3.5 py-1.5 text-[13px] font-medium text-stone-700 transition-all duration-200 hover:border-stone-400 hover:bg-stone-100/70"
+            >
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-400 font-mono text-[10px] font-semibold text-white">
+                {username[0].toUpperCase()}
+              </span>
+              {username}
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              className="flex items-center gap-1.5 rounded-md border border-stone-300 px-3.5 py-1.5 text-[13px] font-medium text-stone-700 transition-all duration-200 hover:border-stone-400 hover:bg-stone-100/70"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+              Login
+            </Link>
+          )}
         </div>
 
         {/* ── Mobile toggle ── */}
@@ -183,17 +195,33 @@ export default function Navbar() {
                 transition={{ delay: 0.18 }}
                 className="mt-3 border-t border-stone-100 pt-3"
               >
-                <Link
-                  href="/login"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-between rounded-lg border border-stone-300 px-3 py-2.5 text-sm font-medium text-stone-700"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                    Login
-                  </span>
-                  <span className="text-stone-400">→</span>
-                </Link>
+                {username ? (
+                  <Link
+                    href="/admin"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-between rounded-lg border border-stone-300 px-3 py-2.5 text-sm font-medium text-stone-700"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-400 font-mono text-[10px] font-semibold text-white">
+                        {username[0].toUpperCase()}
+                      </span>
+                      {username}
+                    </span>
+                    <span className="text-stone-400">→</span>
+                  </Link>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-between rounded-lg border border-stone-300 px-3 py-2.5 text-sm font-medium text-stone-700"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                      Login
+                    </span>
+                    <span className="text-stone-400">→</span>
+                  </Link>
+                )}
               </motion.div>
             </div>
           </motion.div>

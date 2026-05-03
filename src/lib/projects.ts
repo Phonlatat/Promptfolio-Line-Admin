@@ -29,7 +29,7 @@ export const projects: Project[] = [
     status: "in-progress",
     startDate: "2025-05-01",
     featured: true,
-    links: { github: "#", live: "#" },
+    links: { github: "https://github.com/Phonlatat/promptfolio" },
   },
   {
     id: "line-admin",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     status: "in-progress",
     startDate: "2025-05-01",
     featured: true,
-    links: { github: "#" },
+    links: { github: "https://github.com/Phonlatat/line-admin" },
   },
   {
     id: "ai-prompt-library",

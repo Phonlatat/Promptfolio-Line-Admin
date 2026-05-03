@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -25,18 +26,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+const USERS: Record<string, string> = {
+  aom242544: "Phonlatat",
+};
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jar = await cookies();
+  const userId = jar.get("admin_session")?.value ?? "";
+  const username = USERS[userId] ?? null;
+
   return (
     <html
       lang="th"
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
+        <Navbar username={username} />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

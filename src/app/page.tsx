@@ -4,6 +4,7 @@ import FadeUp from "@/components/FadeUp";
 import CountUp from "@/components/CountUp";
 import { StaggerGrid, StaggerItem } from "@/components/StaggerGrid";
 import { getFeaturedProjects, projects } from "@/lib/projects";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 
 export default function HomePage() {
   const featured = getFeaturedProjects();
@@ -53,10 +54,10 @@ export default function HomePage() {
                 ดูโปรเจคทั้งหมด
               </Link>
               <Link
-                href="/projects/new"
+                href="/about"
                 className="rounded-lg border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-stone-700 transition-all duration-200 hover:border-stone-400 hover:bg-stone-50"
               >
-                + เพิ่มโปรเจคใหม่
+                เกี่ยวกับฉัน →
               </Link>
             </div>
           </FadeUp>
@@ -119,6 +120,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── Photo Slideshow ─── */}
+      <section className="overflow-hidden py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <FadeUp>
+            <div className="mb-10 flex items-end justify-between">
+              <div>
+                <p className="mb-1 font-mono text-xs uppercase tracking-widest text-stone-400">
+                  From My Journey
+                </p>
+                <h2 className="text-2xl font-bold tracking-tight text-stone-900 md:text-3xl">
+                  ชีวิตนอกหน้าจอ
+                </h2>
+              </div>
+              <Link
+                href="/about"
+                className="text-sm font-medium text-stone-500 transition-colors hover:text-stone-900"
+              >
+                เกี่ยวกับฉัน →
+              </Link>
+            </div>
+          </FadeUp>
+        </div>
+
+        <FadeUp delay={0.1}>
+          <PhotoSlideshow />
+        </FadeUp>
+      </section>
+
       {/* ─── Divider ─── */}
       <div className="mx-auto max-w-5xl w-full px-6">
         <div className="h-px bg-stone-200" />
@@ -130,19 +159,19 @@ export default function HomePage() {
           <FadeUp>
             <div className="rounded-2xl border border-stone-200 bg-white p-12 text-center">
               <p className="mb-2 font-mono text-xs uppercase tracking-widest text-stone-400">
-                Ready?
+                Let&apos;s connect
               </p>
               <h2 className="mb-3 text-2xl font-bold tracking-tight text-stone-900">
-                มีไอเดียโปรเจคใหม่?
+                สนใจร่วมงานกัน?
               </h2>
               <p className="mb-8 text-stone-500">
-                บันทึกไว้ก่อนที่มันจะหายไป
+                พร้อมรับโปรเจคใหม่และโอกาสใหม่ๆ เสมอ
               </p>
               <Link
-                href="/projects/new"
+                href="/about#connect"
                 className="inline-flex items-center gap-2 rounded-lg bg-stone-900 px-6 py-3 text-sm font-medium text-stone-50 transition-all duration-200 hover:bg-stone-800 hover:shadow-lg hover:shadow-stone-900/10"
               >
-                + เพิ่มโปรเจคใหม่
+                ติดต่อฉัน →
               </Link>
             </div>
           </FadeUp>

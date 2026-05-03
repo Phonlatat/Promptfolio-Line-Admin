@@ -12,7 +12,7 @@ export async function login(
 
   if (id === "aom242544" && pass === "AoM242544") {
     const jar = await cookies();
-    jar.set("admin_session", "ok", {
+    jar.set("admin_session", "aom242544", {
       httpOnly: true,
       sameSite: "lax",
       maxAge: 60 * 60 * 8, // 8 hours
