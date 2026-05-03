@@ -8,7 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
+  { href: "/blocks", label: "Blocks" },
+  { href: "/about", label: "About Me" },
 ];
 
 export default function Navbar() {
@@ -85,16 +86,14 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* ── CTA ── */}
+        {/* ── Login shortcut ── */}
         <div className="hidden md:flex">
           <Link
-            href="/projects/new"
-            className="group flex items-center gap-1 rounded-md border border-stone-300 px-3.5 py-1.5 text-[13px] font-medium text-stone-700 transition-all duration-200 hover:border-stone-400 hover:bg-stone-100/70"
+            href="/login"
+            className="flex items-center gap-1.5 rounded-md border border-stone-300 px-3.5 py-1.5 text-[13px] font-medium text-stone-700 transition-all duration-200 hover:border-stone-400 hover:bg-stone-100/70"
           >
-            New project
-            <span className="text-stone-400 transition-transform duration-200 group-hover:translate-x-0.5">
-              →
-            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+            Login
           </Link>
         </div>
 
@@ -185,11 +184,14 @@ export default function Navbar() {
                 className="mt-3 border-t border-stone-100 pt-3"
               >
                 <Link
-                  href="/projects/new"
+                  href="/login"
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center justify-between rounded-lg border border-stone-300 px-3 py-2.5 text-sm font-medium text-stone-700"
                 >
-                  New project
+                  <span className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                    Login
+                  </span>
                   <span className="text-stone-400">→</span>
                 </Link>
               </motion.div>
