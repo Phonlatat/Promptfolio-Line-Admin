@@ -3,11 +3,12 @@ import ProjectCard from "@/components/ProjectCard";
 import FadeUp from "@/components/FadeUp";
 import CountUp from "@/components/CountUp";
 import { StaggerGrid, StaggerItem } from "@/components/StaggerGrid";
-import { getFeaturedProjects, projects } from "@/lib/projects";
 import PhotoSlideshow from "@/components/PhotoSlideshow";
+import { db } from "@/lib/db";
 
-export default function HomePage() {
-  const featured = getFeaturedProjects();
+export default async function HomePage() {
+  const projects = await db.project.findMany({ orderBy: { createdAt: "desc" } });
+  const featured = projects.filter((p) => p.featured);
   const stats = {
     total: projects.length,
     inProgress: projects.filter((p) => p.status === "in-progress").length,
@@ -20,14 +21,12 @@ export default function HomePage() {
       {/* ─── Hero ─── */}
       <section className="px-6 pb-28 pt-24">
         <div className="mx-auto max-w-5xl">
-          {/* Eyebrow */}
           <FadeUp>
             <p className="mb-6 font-mono text-xs font-medium uppercase tracking-widest text-stone-400">
               Portfolio & Project Tracker
             </p>
           </FadeUp>
 
-          {/* Headline */}
           <FadeUp delay={0.08}>
             <h1 className="mb-6 max-w-2xl text-5xl font-bold leading-[1.1] tracking-tight text-stone-900 md:text-6xl lg:text-7xl">
               บันทึกทุกโปรเจค
@@ -36,7 +35,6 @@ export default function HomePage() {
             </h1>
           </FadeUp>
 
-          {/* Subtitle */}
           <FadeUp delay={0.16}>
             <p className="mb-10 max-w-lg text-lg leading-relaxed text-stone-500">
               Promptfolio ช่วยติดตาม วางแผน และแสดงผลงานทั้งหมด
@@ -44,7 +42,6 @@ export default function HomePage() {
             </p>
           </FadeUp>
 
-          {/* CTAs */}
           <FadeUp delay={0.22}>
             <div className="flex flex-wrap items-center gap-3">
               <Link
@@ -89,36 +86,38 @@ export default function HomePage() {
       </section>
 
       {/* ─── Featured Projects ─── */}
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <FadeUp>
-            <div className="mb-12 flex items-end justify-between">
-              <div>
-                <p className="mb-1 font-mono text-xs uppercase tracking-widest text-stone-400">
-                  Featured
-                </p>
-                <h2 className="text-2xl font-bold tracking-tight text-stone-900 md:text-3xl">
-                  โปรเจคเด่น
-                </h2>
+      {featured.length > 0 && (
+        <section className="px-6 py-24">
+          <div className="mx-auto max-w-5xl">
+            <FadeUp>
+              <div className="mb-12 flex items-end justify-between">
+                <div>
+                  <p className="mb-1 font-mono text-xs uppercase tracking-widest text-stone-400">
+                    Featured
+                  </p>
+                  <h2 className="text-2xl font-bold tracking-tight text-stone-900 md:text-3xl">
+                    โปรเจคเด่น
+                  </h2>
+                </div>
+                <Link
+                  href="/projects"
+                  className="text-sm font-medium text-stone-500 transition-colors hover:text-stone-900"
+                >
+                  ดูทั้งหมด →
+                </Link>
               </div>
-              <Link
-                href="/projects"
-                className="text-sm font-medium text-stone-500 transition-colors hover:text-stone-900"
-              >
-                ดูทั้งหมด →
-              </Link>
-            </div>
-          </FadeUp>
+            </FadeUp>
 
-          <StaggerGrid className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project) => (
-              <StaggerItem key={project.id}>
-                <ProjectCard project={project} />
-              </StaggerItem>
-            ))}
-          </StaggerGrid>
-        </div>
-      </section>
+            <StaggerGrid className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {featured.map((project) => (
+                <StaggerItem key={project.id}>
+                  <ProjectCard project={project} />
+                </StaggerItem>
+              ))}
+            </StaggerGrid>
+          </div>
+        </section>
+      )}
 
       {/* ─── Photo Slideshow ─── */}
       <section className="overflow-hidden py-20">

@@ -1,0 +1,12 @@
+
+> promptfolio@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.128.174.251:3000
+- Environments: .env.local, .env
+✓ Ready in 940ms
+
+ GET / 200 in 1750ms (next.js: 328ms, application-code: 1422ms)
+ GET /projects 200 in 227ms (next.js: 40ms, application-code: 187ms)

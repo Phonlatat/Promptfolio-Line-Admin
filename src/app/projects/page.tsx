@@ -1,10 +1,14 @@
 import ProjectCard from "@/components/ProjectCard";
 import FadeUp from "@/components/FadeUp";
 import { StaggerGrid, StaggerItem } from "@/components/StaggerGrid";
-import { projects, ProjectStatus, statusConfig } from "@/lib/projects";
+import { statusConfig, type ProjectStatus } from "@/lib/projects";
+import { db } from "@/lib/db";
+import type { Project } from "@prisma/client";
 
-export default function ProjectsPage() {
-  const grouped: Record<ProjectStatus, typeof projects> = {
+export default async function ProjectsPage() {
+  const projects = await db.project.findMany({ orderBy: { createdAt: "desc" } });
+
+  const grouped: Record<ProjectStatus, Project[]> = {
     "in-progress": projects.filter((p) => p.status === "in-progress"),
     planning: projects.filter((p) => p.status === "planning"),
     completed: projects.filter((p) => p.status === "completed"),
@@ -33,6 +37,9 @@ export default function ProjectsPage() {
 
       {/* Groups */}
       <div className="flex flex-col gap-20">
+        {projects.length === 0 && (
+          <p className="py-24 text-center text-sm text-stone-400">ยังไม่มีโปรเจค</p>
+        )}
         {order.map((status, groupIdx) => {
           const group = grouped[status];
           if (!group.length) return null;

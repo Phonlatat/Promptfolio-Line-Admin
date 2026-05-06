@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Project, statusConfig } from "@/lib/projects";
+import { statusConfig, type Project, type ProjectStatus } from "@/lib/projects";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const status = statusConfig[project.status];
+  const status = statusConfig[project.status as ProjectStatus] ?? statusConfig.planning;
 
   return (
     <Link href={`/projects/${project.id}`} className="block h-full">

@@ -1,22 +1,19 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FadeUp from "@/components/FadeUp";
-import { getProjectById, projects, statusConfig } from "@/lib/projects";
+import { statusConfig, type ProjectStatus } from "@/lib/projects";
+import { db } from "@/lib/db";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export function generateStaticParams() {
-  return projects.map((p) => ({ id: p.id }));
-}
-
 export default async function ProjectDetailPage({ params }: Props) {
   const { id } = await params;
-  const project = getProjectById(id);
+  const project = await db.project.findUnique({ where: { id } });
   if (!project) notFound();
 
-  const status = statusConfig[project.status];
+  const status = statusConfig[project.status as ProjectStatus] ?? statusConfig.planning;
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-20">
@@ -108,20 +105,20 @@ export default async function ProjectDetailPage({ params }: Props) {
       </FadeUp>
 
       {/* Links */}
-      {(project.links?.github || project.links?.live) && (
+      {(project.githubUrl || project.liveUrl) && (
         <FadeUp delay={0.3}>
           <div className="mb-12 flex flex-wrap gap-3">
-            {project.links.github && (
+            {project.githubUrl && (
               <a
-                href={project.links.github}
+                href={project.githubUrl}
                 className="rounded-lg border border-stone-200 bg-white px-4 py-2.5 text-sm font-medium text-stone-700 transition-all duration-200 hover:border-stone-300 hover:bg-stone-50"
               >
                 GitHub Repository →
               </a>
             )}
-            {project.links.live && (
+            {project.liveUrl && (
               <a
-                href={project.links.live}
+                href={project.liveUrl}
                 className="rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-medium text-stone-50 transition-all duration-200 hover:bg-stone-800"
               >
                 Live Demo →
