@@ -7,7 +7,10 @@ import PhotoSlideshow from "@/components/PhotoSlideshow";
 import { db } from "@/lib/db";
 
 export default async function HomePage() {
-  const projects = await db.project.findMany({ orderBy: { createdAt: "desc" } });
+  const [projects, slideshowPhotos] = await Promise.all([
+    db.project.findMany({ orderBy: { createdAt: "desc" } }),
+    db.photo.findMany({ where: { inSlideshow: true }, orderBy: { order: "asc" } }),
+  ]);
   const featured = projects.filter((p) => p.featured);
   const stats = {
     total: projects.length,
@@ -143,7 +146,7 @@ export default async function HomePage() {
         </div>
 
         <FadeUp delay={0.1}>
-          <PhotoSlideshow />
+          <PhotoSlideshow slides={slideshowPhotos} />
         </FadeUp>
       </section>
 

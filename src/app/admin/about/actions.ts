@@ -1,0 +1,135 @@
+"use server";
+
+import { db } from "@/lib/db";
+import { revalidatePath } from "next/cache";
+
+const PATHS = ["/about", "/", "/admin/about"];
+function revalidateAll() {
+  PATHS.forEach((p) => revalidatePath(p));
+}
+
+// ── Fetch ─────────────────────────────────────────────────────────────
+
+export async function getAboutData() {
+  const [profile, skills, experience, photos] = await Promise.all([
+    db.profile.findUnique({ where: { id: "singleton" } }),
+    db.skillGroup.findMany({ orderBy: { createdAt: "asc" } }),
+    db.experience.findMany({ orderBy: { order: "asc" } }),
+    db.photo.findMany({ orderBy: { order: "asc" } }),
+  ]);
+  return { profile, skills, experience, photos };
+}
+
+// ── Profile ───────────────────────────────────────────────────────────
+
+export type ProfileData = {
+  mainPhoto: string;
+  photoCaption: string;
+  name: string;
+  title: string;
+  description: string;
+  university: string;
+  degree: string;
+  location: string;
+};
+
+export async function saveProfile(data: ProfileData) {
+  const profile = await db.profile.upsert({
+    where: { id: "singleton" },
+    update: data,
+    create: { id: "singleton", ...data },
+  });
+  revalidateAll();
+  return profile;
+}
+
+// ── Skills ────────────────────────────────────────────────────────────
+
+export async function createSkillGroup(category: string) {
+  const group = await db.skillGroup.create({ data: { category, items: [] } });
+  revalidateAll();
+  return group;
+}
+
+export async function deleteSkillGroup(id: string) {
+  await db.skillGroup.delete({ where: { id } });
+  revalidateAll();
+}
+
+export async function updateSkillItems(id: string, items: string[]) {
+  const group = await db.skillGroup.update({ where: { id }, data: { items } });
+  revalidateAll();
+  return group;
+}
+
+// ── Experience ────────────────────────────────────────────────────────
+
+export async function createExperience(data: {
+  year: string;
+  role: string;
+  company: string;
+  desc: string;
+}) {
+  const count = await db.experience.count();
+  const exp = await db.experience.create({ data: { ...data, order: count } });
+  revalidateAll();
+  return exp;
+}
+
+export async function updateExperience(
+  id: string,
+  data: { year: string; role: string; company: string; desc: string }
+) {
+  const exp = await db.experience.update({ where: { id }, data });
+  revalidateAll();
+  return exp;
+}
+
+export async function deleteExperience(id: string) {
+  await db.experience.delete({ where: { id } });
+  revalidateAll();
+}
+
+// ── Photos ────────────────────────────────────────────────────────────
+
+export async function createPhoto(data: {
+  src: string;
+  alt: string;
+  caption: string;
+}) {
+  const count = await db.photo.count();
+  const photo = await db.photo.create({ data: { ...data, order: count } });
+  revalidateAll();
+  return photo;
+}
+
+export async function deletePhoto(id: string) {
+  await db.photo.delete({ where: { id } });
+  revalidateAll();
+}
+
+export async function togglePhotoSlideshow(id: string, inSlideshow: boolean) {
+  const photo = await db.photo.update({ where: { id }, data: { inSlideshow } });
+  revalidateAll();
+  return photo;
+}
+
+export async function updatePhotoMeta(id: string, data: { alt: string; caption: string }) {
+  const photo = await db.photo.update({ where: { id }, data });
+  revalidateAll();
+  return photo;
+}
+
+export async function uploadPhotoFile(formData: FormData): Promise<string> {
+  const file = formData.get("file") as File;
+  const { writeFile, mkdir } = await import("fs/promises");
+  const { join, extname } = await import("path");
+  const uploadsDir = join(process.cwd(), "public", "uploads");
+  await mkdir(uploadsDir, { recursive: true });
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+  const ext = extname(file.name).toLowerCase() || ".jpg";
+  const filename = `${Date.now()}${ext}`;
+  await writeFile(join(uploadsDir, filename), buffer);
+  return `/uploads/${filename}`;
+}

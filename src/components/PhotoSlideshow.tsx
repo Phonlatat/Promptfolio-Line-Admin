@@ -4,20 +4,13 @@ import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
-const slides = [
-  { src: "/me/aquarium.jpg", alt: "Phonlatat at an aquarium tunnel", caption: "Osaka · Japan" },
-  { src: "/me/beach.jpg",    alt: "Photographing the ocean",         caption: "Kamakura · Japan" },
-  { src: "/me/vending.jpg",  alt: "Vending machines in the snow",    caption: "Hokkaido · Japan" },
-  { src: "/me/snow.jpg",     alt: "Snowstorm in Hokkaido",           caption: "Hokkaido · Japan" },
-  { src: "/me/night.jpg",    alt: "Nighttime in Hokkaido",           caption: "Hokkaido · Japan" },
-  { src: "/me/store.jpg",    alt: "At a Japanese electronics store", caption: "Tokyo · Japan" },
-];
+type Slide = { src: string; alt: string; caption: string };
 
 const CARD_W = 260;
 const CARD_H = Math.round(CARD_W * (4 / 3)); // 346
 const STEP   = CARD_W + 24;                   // 284
 
-export default function PhotoSlideshow() {
+export default function PhotoSlideshow({ slides }: { slides: Slide[] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = slides.length;
@@ -26,10 +19,22 @@ export default function PhotoSlideshow() {
   const prev = useCallback(() => setActive((p) => (p - 1 + n) % n), [n]);
 
   useEffect(() => {
-    if (paused) return;
+    setActive(0);
+  }, [n]);
+
+  useEffect(() => {
+    if (paused || n === 0) return;
     const id = setInterval(next, 4500);
     return () => clearInterval(id);
-  }, [paused, next]);
+  }, [paused, next, n]);
+
+  if (n === 0) {
+    return (
+      <div className="flex items-center justify-center" style={{ height: CARD_H }}>
+        <p className="text-sm text-stone-400">ยังไม่มีรูปใน Slideshow — เพิ่มที่ Admin → About → Gallery</p>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -69,7 +74,6 @@ export default function PhotoSlideshow() {
                 if (offset === -1) prev();
               }}
             >
-              {/* Photo */}
               <Image
                 src={slide.src}
                 alt={slide.alt}
@@ -78,21 +82,18 @@ export default function PhotoSlideshow() {
                 sizes="260px"
               />
 
-              {/* Dim overlay on non-active */}
               <motion.div
                 className="absolute inset-0 bg-stone-900"
                 animate={{ opacity: isActive ? 0 : 0.28 }}
                 transition={{ duration: 0.5 }}
               />
 
-              {/* Bottom gradient on active */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"
                 animate={{ opacity: isActive ? 1 : 0 }}
                 transition={{ duration: 0.4 }}
               />
 
-              {/* Caption */}
               <motion.div
                 className="absolute bottom-4 left-4 pointer-events-none"
                 animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 8 }}
@@ -103,7 +104,6 @@ export default function PhotoSlideshow() {
                 </span>
               </motion.div>
 
-              {/* Auto-play progress bar */}
               {isActive && !paused && (
                 <motion.div
                   key={active}

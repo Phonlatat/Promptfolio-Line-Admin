@@ -4,10 +4,97 @@
 
 ▲ Next.js 16.2.4 (Turbopack)
 - Local:         http://localhost:3000
-- Network:       http://10.128.174.251:3000
+- Network:       http://172.20.10.3:3000
 - Environments: .env.local, .env
-✓ Ready in 940ms
+✓ Ready in 797ms
 
- GET / 200 in 1750ms (next.js: 328ms, application-code: 1422ms)
- GET /projects 200 in 227ms (next.js: 40ms, application-code: 187ms)
- GET / 200 in 596ms (next.js: 8ms, application-code: 588ms)
+ GET /admin/projects 200 in 2.4s (next.js: 1516ms, application-code: 881ms)
+ GET / 200 in 2.5s (next.js: 916ms, application-code: 1632ms)
+ GET /about 200 in 957ms (next.js: 63ms, application-code: 894ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /admin/blocks 200 in 229ms (next.js: 42ms, application-code: 188ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /admin/about 200 in 198ms (next.js: 32ms, application-code: 166ms)
+ POST /admin/about 200 in 296ms (next.js: 10ms, application-code: 286ms)
+  └─ ƒ saveProfile({"degree":"B.Eng. Computer Engineering","description":"With a strong interest in technology, I enjoy coding, building systems, and learning deep into things. I'm focused on every detail and eager to learn from every role.","location":"Thailand","...":"5 items not stringified"}) in 108ms src/app/admin/about/actions.ts
+ GET /about 200 in 491ms (next.js: 11ms, application-code: 481ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ POST /admin/about 200 in 292ms (next.js: 13ms, application-code: 279ms)
+  └─ ƒ saveProfile({"degree":"B.Eng. Computer Engineering","description":"With a strong interest in technology, I enjoy coding, building systems, and learning deep into things. I'm focused on every detail and eager to learn from every role.","location":"Thailand","...":"5 items not stringified"}) in 122ms src/app/admin/about/actions.ts
+ GET /admin/about 200 in 22ms (next.js: 7ms, application-code: 15ms)
+ GET /admin/about 200 in 501ms (next.js: 5ms, application-code: 496ms)
+ POST /admin/about 200 in 1001ms (next.js: 6ms, application-code: 994ms)
+  └─ ƒ createSkillGroup("Gaming") in 490ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 1231ms (next.js: 5ms, application-code: 1226ms)
+  └─ ƒ updateSkillItems("cmotvcwu50000iwp2fsdt0i69", ["Overwatch,CS2,TFT"]) in 388ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 258ms (next.js: 5ms, application-code: 253ms)
+  └─ ƒ updateSkillItems("cmotvcwu50000iwp2fsdt0i69", []) in 84ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 239ms (next.js: 6ms, application-code: 233ms)
+  └─ ƒ updateSkillItems("cmotvcwu50000iwp2fsdt0i69", ["Overwatch"]) in 84ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 251ms (next.js: 7ms, application-code: 245ms)
+  └─ ƒ updateSkillItems("cmotvcwu50000iwp2fsdt0i69", ["Overwatch","CS2"]) in 91ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 267ms (next.js: 7ms, application-code: 260ms)
+  └─ ƒ updateSkillItems("cmotvcwu50000iwp2fsdt0i69", ["Overwatch","CS2","TFT"]) in 82ms src/app/admin/about/actions.ts
+ GET /about 200 in 570ms (next.js: 38ms, application-code: 532ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ POST /admin/about 200 in 1059ms (next.js: 5ms, application-code: 1054ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000aokp2q3hnmzx9", false) in 491ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 645ms (next.js: 6ms, application-code: 639ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000aokp2q3hnmzx9", true) in 379ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 238ms (next.js: 6ms, application-code: 232ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000aokp2q3hnmzx9", false) in 90ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 216ms (next.js: 5ms, application-code: 211ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000aokp2q3hnmzx9", true) in 76ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 294ms (next.js: 7ms, application-code: 288ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000aokp2q3hnmzx9", false) in 96ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 250ms (next.js: 6ms, application-code: 244ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000aokp2q3hnmzx9", true) in 95ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 289ms (next.js: 5ms, application-code: 284ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000eokp2hetpuwsd", false) in 85ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 263ms (next.js: 4ms, application-code: 258ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000dokp24vqvrnpg", false) in 82ms src/app/admin/about/actions.ts
+ GET / 200 in 142ms (next.js: 7ms, application-code: 135ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ POST /admin/about 200 in 1261ms (next.js: 17ms, application-code: 1244ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000dokp24vqvrnpg", true) in 79ms src/app/admin/about/actions.ts
+ POST /admin/about 200 in 800ms (next.js: 51ms, application-code: 749ms)
+  └─ ƒ togglePhotoSlideshow("cmotuny50000eokp2hetpuwsd", true) in 140ms src/app/admin/about/actions.ts
+ GET / 200 in 256ms (next.js: 7ms, application-code: 249ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /about 200 in 512ms (next.js: 6ms, application-code: 506ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /admin/about 200 in 539ms (next.js: 6ms, application-code: 533ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.20.10.3:3000
+- Environments: .env.local, .env
+✓ Ready in 1110ms
+- Experiments (use with caution):
+  · serverActions
+
+ GET /admin/about 200 in 5.0s (next.js: 2.8s, application-code: 2.2s)
+ GET /about 200 in 5.1s (next.js: 1691ms, application-code: 3.4s)
+ GET /admin/about 200 in 1019ms (next.js: 293ms, application-code: 726ms)
+ GET /about 200 in 1072ms (next.js: 7ms, application-code: 1064ms)
+ GET /admin/about 200 in 818ms (next.js: 96ms, application-code: 722ms)
+ GET /about 200 in 925ms (next.js: 19ms, application-code: 906ms)
+ GET /about 200 in 777ms (next.js: 7ms, application-code: 770ms)
+ GET /admin/about 200 in 291ms (next.js: 5ms, application-code: 285ms)
+ GET /about 200 in 841ms (next.js: 51ms, application-code: 791ms)
+ GET /about 200 in 358ms (next.js: 5ms, application-code: 353ms)
+ GET /admin/about 200 in 186ms (next.js: 5ms, application-code: 181ms)
+ GET /admin/about 200 in 170ms (next.js: 6ms, application-code: 164ms)
+ GET /admin/about 200 in 1048ms (next.js: 212ms, application-code: 836ms)
+ GET /admin/about 200 in 764ms (next.js: 130ms, application-code: 635ms)
+ GET /about 200 in 1234ms (next.js: 6ms, application-code: 1227ms)
+ GET /admin/about 200 in 252ms (next.js: 6ms, application-code: 246ms)
+ GET /about 200 in 859ms (next.js: 53ms, application-code: 806ms)
+ GET /about 200 in 665ms (next.js: 8ms, application-code: 657ms)
+ GET /about 200 in 666ms (next.js: 45ms, application-code: 621ms)
+ GET /admin/about 200 in 145ms (next.js: 6ms, application-code: 139ms)
