@@ -16,6 +16,8 @@ export default function Navbar({ username }: { username?: string | null }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  if (pathname.startsWith("/admin")) return null;
+
   // Match current section — exact for "/", prefix for everything else
   const activeLink = navLinks
     .filter((l) =>

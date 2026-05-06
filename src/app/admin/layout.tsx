@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import AdminNavbar from "@/components/AdminNavbar";
 
 const VALID_USERS = new Set(["aom242544"]);
 
@@ -9,5 +10,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!VALID_USERS.has(userId)) {
     redirect("/login");
   }
-  return <>{children}</>;
+  return (
+    <div className="min-h-full bg-stone-50">
+      <AdminNavbar />
+      {children}
+    </div>
+  );
 }
