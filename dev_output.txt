@@ -102,3 +102,48 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (f
  GET /admin/blocks 200 in 194ms (next.js: 35ms, application-code: 159ms)
 [browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
  GET /admin/about 200 in 152ms (next.js: 6ms, application-code: 146ms)
+  Reload env: .env
+✓ Compiled in 164ms
+⚠ Fast Refresh had to perform a full reload when ./node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.20.10.3:3000
+- Environments: .env.local, .env
+✓ Ready in 676ms
+- Experiments (use with caution):
+  · serverActions
+
+ GET /admin/about 200 in 2.9s (next.js: 1112ms, application-code: 1834ms)
+ GET /admin/about 200 in 925ms (next.js: 105ms, application-code: 820ms)
+ GET /admin/about 200 in 796ms (next.js: 10ms, application-code: 785ms)
+ GET /admin/about 200 in 1063ms (next.js: 85ms, application-code: 978ms)
+ GET /admin/about 200 in 541ms (next.js: 8ms, application-code: 533ms)
+ GET /admin/about 200 in 3.7s (next.js: 1577ms, application-code: 2.1s)
+ GET /about 200 in 3.9s (next.js: 1721ms, application-code: 2.2s)
+✓ Compiled in 558ms
+[browser] Can't perform a React state update on a component that hasn't mounted yet. This indicates that you have a side-effect in your render function that asynchronously tries to update the component. Move this work to useEffect instead. 
+    at <unknown> (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10139:29)
+    at runWithFiberInDEV (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at warnAboutUpdateOnNotYetMountedFiberInDEV (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10138:17)
+    at getRootForUpdatedFiber (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:2970:132)
+    at enqueueConcurrentHookUpdate (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:2951:16)
+    at dispatchOptimisticSetState (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:5661:38)
+    at startTransition (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:5467:9)
+    at nextDispatch (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:962:13)
+    at dispatchAppRouterAction (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:922:5)
+    at <unknown> (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:11800:61)
+    at startTransition (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:1279:31)
+    at Object.hmrRefresh (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:11799:40)
+    at <unknown> (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13967:64)
+    at startTransition (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:1279:31)
+    at processMessage (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13966:44)
+    at WebSocket.handleMessage (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13335:52) (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10139:29)
+ GET /admin/about 200 in 724ms (next.js: 105ms, application-code: 619ms)
+ GET /admin/about 200 in 565ms (next.js: 11ms, application-code: 554ms)
+ GET /admin/about 200 in 444ms (next.js: 11ms, application-code: 433ms)
+ GET /admin/about 200 in 432ms (next.js: 16ms, application-code: 417ms)
+ GET /admin/about 200 in 434ms (next.js: 84ms, application-code: 350ms)
+ GET /admin/about 200 in 429ms (next.js: 147ms, application-code: 281ms)
+ GET /admin/about 200 in 210ms (next.js: 7ms, application-code: 203ms)
+ GET /admin/about 200 in 199ms (next.js: 8ms, application-code: 191ms)

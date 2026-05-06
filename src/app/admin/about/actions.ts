@@ -122,14 +122,32 @@ export async function updatePhotoMeta(id: string, data: { alt: string; caption: 
 
 export async function uploadPhotoFile(formData: FormData): Promise<string> {
   const file = formData.get("file") as File;
-  const { writeFile, mkdir } = await import("fs/promises");
-  const { join, extname } = await import("path");
-  const uploadsDir = join(process.cwd(), "public", "uploads");
-  await mkdir(uploadsDir, { recursive: true });
+  const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+  const filename = `${Date.now()}.${ext}`;
+  const bucket = "gallery";
+
+  const supabaseUrl = process.env.SUPABASE_URL!;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
   const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const ext = extname(file.name).toLowerCase() || ".jpg";
-  const filename = `${Date.now()}${ext}`;
-  await writeFile(join(uploadsDir, filename), buffer);
-  return `/uploads/${filename}`;
+
+  const res = await fetch(
+    `${supabaseUrl}/storage/v1/object/${bucket}/${filename}`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${serviceKey}`,
+        "Content-Type": file.type || "image/jpeg",
+        "x-upsert": "true",
+      },
+      body: bytes,
+    }
+  );
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Upload failed: ${text}`);
+  }
+
+  return `${supabaseUrl}/storage/v1/object/public/${bucket}/${filename}`;
 }
