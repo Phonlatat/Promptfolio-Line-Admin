@@ -98,3 +98,7 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (f
  GET /about 200 in 665ms (next.js: 8ms, application-code: 657ms)
  GET /about 200 in 666ms (next.js: 45ms, application-code: 621ms)
  GET /admin/about 200 in 145ms (next.js: 6ms, application-code: 139ms)
+ GET /admin/about 200 in 672ms (next.js: 18ms, application-code: 654ms)
+ GET /admin/blocks 200 in 194ms (next.js: 35ms, application-code: 159ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /admin/about 200 in 152ms (next.js: 6ms, application-code: 146ms)
