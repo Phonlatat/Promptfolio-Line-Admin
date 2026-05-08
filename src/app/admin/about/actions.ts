@@ -104,7 +104,24 @@ export async function createPhoto(data: {
 }
 
 export async function deletePhoto(id: string) {
+  const photo = await db.photo.findUnique({ where: { id }, select: { src: true } });
+
   await db.photo.delete({ where: { id } });
+
+  if (photo?.src) {
+    const supabaseUrl = process.env.SUPABASE_URL!;
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+    const bucket = "gallery";
+    // Extract filename from full public URL
+    const filename = photo.src.split(`/object/public/${bucket}/`)[1];
+    if (filename) {
+      await fetch(`${supabaseUrl}/storage/v1/object/${bucket}/${filename}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${serviceKey}` },
+      });
+    }
+  }
+
   revalidateAll();
 }
 

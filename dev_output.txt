@@ -147,3 +147,70 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (f
  GET /admin/about 200 in 429ms (next.js: 147ms, application-code: 281ms)
  GET /admin/about 200 in 210ms (next.js: 7ms, application-code: 203ms)
  GET /admin/about 200 in 199ms (next.js: 8ms, application-code: 191ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+✓ Compiled in 283ms
+⚠ Fast Refresh had to perform a full reload when ./node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload when ./node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⨯ Error: Module [project]/node_modules/next/dist/esm/client/components/layout-router.js [app-ssr] (ecmascript) was instantiated because it was required from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/about/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript, tag client)\" } [app-rsc] (structured image object, ecmascript)", METADATA_1 => "[project]/src/app/icon.svg.mjs { IMAGE => \"[project]/src/app/icon.svg (static in ecmascript, tag client)\" } [app-rsc] (structured image object, ecmascript)", METADATA_2 => "[project]/src/app/apple-icon--metadata.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_7 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_8 => "[project]/src/app/about/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>, but the module factory is not available.
+This is often caused by a stale browser cache, misconfigured Cache-Control headers, or a service worker serving outdated responses.
+To fix this, make sure your Cache-Control headers allow revalidation of chunks and review your service worker configuration. As an immediate workaround, try hard-reloading the page, clearing the browser cache, or unregistering any service workers.
+    at ignore-listed frames {
+  digest: '3161524420'
+}
+ GET /about 200 in 740ms (next.js: 132ms, application-code: 609ms)
+ GET /about 200 in 1303ms (next.js: 483ms, application-code: 820ms)
+ GET /admin/about 200 in 1529ms (next.js: 157ms, application-code: 1372ms)
+ GET /admin/about 200 in 1062ms (next.js: 42ms, application-code: 1021ms)
+ GET /about 500 in 1299ms (next.js: 7ms, application-code: 1292ms)
+ GET /admin/about 200 in 718ms (next.js: 37ms, application-code: 681ms)
+ GET /admin/about 200 in 577ms (next.js: 9ms, application-code: 568ms)
+ GET /admin/about 200 in 594ms (next.js: 58ms, application-code: 536ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /about 200 in 688ms (next.js: 8ms, application-code: 681ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /blocks 200 in 212ms (next.js: 54ms, application-code: 158ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /projects 200 in 245ms (next.js: 43ms, application-code: 202ms)
+ GET /about 200 in 174ms (next.js: 5ms, application-code: 169ms)
+ GET /about 200 in 408ms (next.js: 8ms, application-code: 400ms)
+ GET /about 200 in 343ms (next.js: 8ms, application-code: 335ms)
+[browser] Image with src "/me/aquarium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /admin 200 in 596ms (next.js: 46ms, application-code: 550ms)
+ GET /admin/blocks 200 in 152ms (next.js: 31ms, application-code: 122ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET /admin/about 200 in 171ms (next.js: 6ms, application-code: 165ms)
+ GET /admin/projects 200 in 180ms (next.js: 30ms, application-code: 150ms)
+ GET /admin/projects 200 in 122ms (next.js: 4ms, application-code: 118ms)
+ GET /admin/about 200 in 157ms (next.js: 5ms, application-code: 152ms)
+⨯ Error: Upload failed: {"statusCode":"403","error":"Unauthorized","message":"Invalid Compact JWS"}
+    at uploadPhotoFile (src\app\admin\about\actions.ts:149:11)
+  147 |   if (!res.ok) {
+  148 |     const text = await res.text();
+> 149 |     throw new Error(`Upload failed: ${text}`);
+      |           ^
+  150 |   }
+  151 |
+  152 |   return `${supabaseUrl}/storage/v1/object/public/${bucket}/${filename}`; {
+  digest: '1671213571'
+}
+ POST /admin/about 500 in 1504ms (next.js: 5ms, application-code: 1499ms)
+  └─ ƒ uploadPhotoFile({}) in 870ms src/app/admin/about/actions.ts
+[browser] Uncaught Error: Upload failed: {"statusCode":"403","error":"Unauthorized","message":"Invalid Compact JWS"}
+    at uploadPhotoFile (src\app\admin\about\actions.ts:149:11)
+    at resolveErrorDev (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://D:/PJ/LearningClaude/Promptfolio Line Admin/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+    at AdminAboutPage (src\app\admin\about\page.tsx:7:5)
+  147 |   if (!res.ok) {
+  148 |     const text = await res.text();
+> 149 |     throw new Error(`Upload failed: ${text}`);
+      |           ^
+  150 |   }
+  151 |
+  152 |   return `${supabaseUrl}/storage/v1/object/public/${bucket}/${filename}`;
