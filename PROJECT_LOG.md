@@ -1,7 +1,7 @@
 # Promptfolio — บันทึกสิ่งที่ทำทั้งหมด
 
 > ไฟล์นี้อัปเดตอัตโนมัติก่อนทุกครั้งที่ `git push`  
-> Last updated: 2026-05-07
+> Last updated: 2026-05-08
 
 ---
 
@@ -162,6 +162,17 @@ prisma/
 
 ---
 
+
+### 2026-05-08
+
+**`897b5aa`** - chap1
+- (add details here)
+
+**`ac2291d`** - delete photo from storage
+- (add details here)
+
+---
+
 ## Features ที่ทำเสร็จแล้ว
 
 - [x] Public portfolio site (Home, Projects, About, Blocks)
@@ -176,6 +187,17 @@ prisma/
 - [x] Framer Motion animations (FadeUp, CountUp, StaggerGrid)
 - [x] Dark theme (slate-950 bg, violet/indigo accents)
 - [x] Deploy to Vercel
+
+
+### 2026-05-08
+
+**`897b5aa`** - chap1
+- (add details here)
+
+**`ac2291d`** - delete photo from storage
+- (add details here)
+
+---
 
 ## Features ที่ยังไม่ได้ทำ
 
