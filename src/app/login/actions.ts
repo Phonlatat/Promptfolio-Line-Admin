@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { ADMIN_SESSION, ADMIN_PASSWORD } from "@/lib/auth";
 
 export async function login(
   _prevState: { error: string } | null,
@@ -10,12 +11,12 @@ export async function login(
   const id = formData.get("id") as string;
   const pass = formData.get("password") as string;
 
-  if (id === "aom242544" && pass === "AoM242544") {
+  if (id === ADMIN_SESSION && pass === ADMIN_PASSWORD) {
     const jar = await cookies();
-    jar.set("admin_session", "aom242544", {
+    jar.set("admin_session", ADMIN_SESSION, {
       httpOnly: true,
       sameSite: "lax",
-      maxAge: 60 * 60 * 8, // 8 hours
+      maxAge: 60 * 60 * 8,
       path: "/",
     });
     redirect("/admin");

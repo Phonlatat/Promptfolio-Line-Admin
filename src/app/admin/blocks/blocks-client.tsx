@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Block } from "@prisma/client";
+import { inputCls, selectCls } from "@/lib/admin-styles";
 import { createBlock, updateBlock, deleteBlock } from "./actions";
 
 type ModalState =
@@ -12,11 +13,6 @@ type ModalState =
 type ToastState = { message: string; variant: "success" | "added" };
 
 const TAGS = ["Note", "Tutorial", "Tip", "Idea", "Reflection", "Update"];
-
-const inputCls =
-  "w-full rounded-lg border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-all focus:border-stone-400 focus:ring-2 focus:ring-stone-200";
-const selectCls =
-  "w-full rounded-lg border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-700 outline-none transition-all focus:border-stone-400 focus:ring-2 focus:ring-stone-200";
 
 export default function BlocksClient({ initialBlocks }: { initialBlocks: Block[] }) {
   const [list, setList] = useState<Block[]>(initialBlocks);

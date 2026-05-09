@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { isAdmin, ADMIN_NAME } from "@/lib/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-const USERS: Record<string, string> = {
-  aom242544: "Phonlatat",
-};
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -37,7 +34,7 @@ export default async function RootLayout({
 }>) {
   const jar = await cookies();
   const userId = jar.get("admin_session")?.value ?? "";
-  const username = USERS[userId] ?? null;
+  const username = isAdmin(userId) ? ADMIN_NAME : null;
 
   return (
     <html

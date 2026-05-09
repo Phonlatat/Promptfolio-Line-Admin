@@ -1,11 +1,11 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { isAdmin } from "@/lib/auth";
 import LoginForm from "./LoginForm";
 
 export default async function LoginPage() {
   const jar = await cookies();
-  const VALID_USERS = new Set(["aom242544"]);
-  if (VALID_USERS.has(jar.get("admin_session")?.value ?? "")) {
+  if (isAdmin(jar.get("admin_session")?.value ?? "")) {
     redirect("/admin");
   }
 

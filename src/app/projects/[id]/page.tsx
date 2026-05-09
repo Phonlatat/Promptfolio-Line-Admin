@@ -128,7 +128,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </FadeUp>
       )}
 
-      {/* Prompt log placeholder */}
+      {/* AI Prompts — coming soon */}
       <FadeUp delay={0.35}>
         <div className="rounded-xl border border-dashed border-stone-300 bg-stone-50/50 p-8 text-center">
           <p className="mb-1 font-mono text-xs uppercase tracking-widest text-stone-400">
@@ -137,9 +137,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           <p className="mt-2 text-sm text-stone-400">
             บันทึก prompt ที่ใช้สร้างโปรเจคนี้ — ยังไม่มีข้อมูล
           </p>
-          <button className="mt-5 rounded-lg border border-stone-300 bg-white px-4 py-2 text-xs font-medium text-stone-600 transition-all hover:border-stone-400 hover:bg-stone-50">
-            + เพิ่ม Prompt
-          </button>
         </div>
       </FadeUp>
     </div>

@@ -4,6 +4,8 @@ import { useState, useTransition, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Profile, SkillGroup, Experience, Photo } from "@prisma/client";
+import { PROFILE_DEFAULTS } from "@/lib/profile-defaults";
+import { inputCls, textareaCls } from "@/lib/admin-styles";
 import {
   saveProfile,
   createSkillGroup,
@@ -31,20 +33,10 @@ interface Props {
 
 const DEFAULT_PROFILE: Profile = {
   id: "singleton",
-  mainPhoto: "/me/aquarium.jpg",
-  photoCaption: "Japan, 2024",
-  name: "Phonlatat",
-  title: "Computer Engineering",
-  description: "With a strong interest in technology, I enjoy coding, building systems, and learning deep into things.",
-  university: "Prince of Songkhla University",
-  degree: "B.Eng. Computer Engineering",
-  location: "Thailand",
+  ...PROFILE_DEFAULTS,
   createdAt: new Date(),
   updatedAt: new Date(),
 };
-
-const inputCls = "w-full rounded-lg border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-all focus:border-stone-400 focus:ring-2 focus:ring-stone-200";
-const textareaCls = `${inputCls} resize-none`;
 
 async function readExifCaption(file: File): Promise<string | null> {
   try {

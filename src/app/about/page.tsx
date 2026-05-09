@@ -4,17 +4,7 @@ import FadeUp from "@/components/FadeUp";
 import { StaggerGrid, StaggerItem } from "@/components/StaggerGrid";
 import PhotoGallery from "@/components/PhotoGallery";
 import { db } from "@/lib/db";
-
-const FALLBACK_PROFILE = {
-  mainPhoto: "/me/aquarium.jpg",
-  photoCaption: "Japan, 2024",
-  name: "Phonlatat",
-  title: "Computer Engineering",
-  description: "With a strong interest in technology, I enjoy coding, building systems, and learning deep into things. I'm focused on every detail and eager to learn from every role.",
-  university: "Prince of Songkhla University",
-  degree: "B.Eng. Computer Engineering",
-  location: "Thailand",
-};
+import { PROFILE_DEFAULTS } from "@/lib/profile-defaults";
 
 export default async function AboutPage() {
   const [profileRow, skills, experience, photos] = await Promise.all([
@@ -24,7 +14,7 @@ export default async function AboutPage() {
     db.photo.findMany({ orderBy: { order: "asc" } }),
   ]);
 
-  const profile = profileRow ?? FALLBACK_PROFILE;
+  const profile = profileRow ?? PROFILE_DEFAULTS;
 
   return (
     <div className="overflow-x-hidden">
@@ -149,10 +139,7 @@ export default async function AboutPage() {
       {/* ── 04 · GALLERY ──────────────────────────────────── */}
       <section className="mx-auto max-w-5xl px-6 py-20">
         <FadeUp>
-          <div className="mb-10 flex items-baseline justify-between">
-            <p className="font-mono text-xs uppercase tracking-widest text-stone-400">Gallery</p>
-            <p className="font-mono text-xs text-stone-300">Japan · 2024</p>
-          </div>
+          <p className="mb-10 font-mono text-xs uppercase tracking-widest text-stone-400">Gallery</p>
         </FadeUp>
         <PhotoGallery photos={photos} />
       </section>

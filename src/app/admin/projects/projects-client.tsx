@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { statusConfig, type Project, type ProjectStatus } from "@/lib/projects";
+import { inputCls, selectCls } from "@/lib/admin-styles";
 import { createProject, updateProject, deleteProject } from "./actions";
 
 type ModalState =
@@ -11,11 +12,6 @@ type ModalState =
   | { kind: "edit"; project: Project };
 
 type ToastState = { message: string; variant: "success" | "added" };
-
-const inputCls =
-  "w-full rounded-lg border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-all focus:border-stone-400 focus:ring-2 focus:ring-stone-200";
-const selectCls =
-  "w-full rounded-lg border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-700 outline-none transition-all focus:border-stone-400 focus:ring-2 focus:ring-stone-200";
 
 export default function ProjectsClient({ initialProjects }: { initialProjects: Project[] }) {
   const [showForm, setShowForm] = useState(false);
