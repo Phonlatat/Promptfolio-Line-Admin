@@ -173,6 +173,14 @@ prisma/
 
 ---
 
+
+### 2026-05-08
+
+**`b9eadc2`** - Project log update
+- (add details here)
+
+---
+
 ## Features ที่ทำเสร็จแล้ว
 
 - [x] Public portfolio site (Home, Projects, About, Blocks)
@@ -195,6 +203,14 @@ prisma/
 - (add details here)
 
 **`ac2291d`** - delete photo from storage
+- (add details here)
+
+---
+
+
+### 2026-05-08
+
+**`b9eadc2`** - Project log update
 - (add details here)
 
 ---
