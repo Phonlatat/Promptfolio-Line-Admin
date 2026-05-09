@@ -192,6 +192,14 @@ prisma/
 
 ---
 
+
+### 2026-05-09
+
+**`0159487`** - Phase 01 finish Doc add
+- (add details here)
+
+---
+
 ## Features ที่ทำเสร็จแล้ว
 
 - [x] Public portfolio site (Home, Projects, About, Blocks)
@@ -233,6 +241,14 @@ prisma/
 - (add details here)
 
 **`6e8640b`** - clean code and env local security
+- (add details here)
+
+---
+
+
+### 2026-05-09
+
+**`0159487`** - Phase 01 finish Doc add
 - (add details here)
 
 ---
