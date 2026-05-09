@@ -1,7 +1,7 @@
 # Promptfolio — บันทึกสิ่งที่ทำทั้งหมด
 
 > ไฟล์นี้อัปเดตอัตโนมัติก่อนทุกครั้งที่ `git push`  
-> Last updated: 2026-05-08
+> Last updated: 2026-05-09
 
 ---
 
@@ -181,6 +181,17 @@ prisma/
 
 ---
 
+
+### 2026-05-09
+
+**`2a1552d`** - save
+- (add details here)
+
+**`6e8640b`** - clean code and env local security
+- (add details here)
+
+---
+
 ## Features ที่ทำเสร็จแล้ว
 
 - [x] Public portfolio site (Home, Projects, About, Blocks)
@@ -211,6 +222,17 @@ prisma/
 ### 2026-05-08
 
 **`b9eadc2`** - Project log update
+- (add details here)
+
+---
+
+
+### 2026-05-09
+
+**`2a1552d`** - save
+- (add details here)
+
+**`6e8640b`** - clean code and env local security
 - (add details here)
 
 ---
