@@ -1,15 +1,6 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { isAdmin } from "@/lib/auth";
 import LoginForm from "./LoginForm";
 
-export default async function LoginPage() {
-  const jar = await cookies();
-  const sessionValue = jar.get("admin_session")?.value ?? "";
-  if (await isAdmin(sessionValue)) {
-    redirect("/admin");
-  }
-
+export default function LoginPage() {
   return (
     <div className="flex min-h-[calc(100vh-56px)] items-center justify-center px-6">
       <div className="w-full max-w-sm">

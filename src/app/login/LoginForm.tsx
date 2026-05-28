@@ -1,16 +1,41 @@
 "use client";
 
-import { useActionState } from "react";
-import { login } from "./actions";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-  const [state, action, pending] = useActionState(login, null);
+  const [error, setError] = useState("");
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const username = form.get("id") as string;
+    const password = form.get("password") as string;
+
+    startTransition(async () => {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (res.ok) {
+        router.push("/admin");
+        router.refresh();
+      } else {
+        const data = await res.json();
+        setError(data.error ?? "เกิดข้อผิดพลาด กรุณาลองใหม่");
+      }
+    });
+  }
 
   return (
-    <form action={action} className="flex flex-col gap-4">
-      {state?.error && (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      {error && (
         <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
-          {state.error}
+          {error}
         </p>
       )}
 
@@ -43,10 +68,10 @@ export default function LoginForm() {
 
       <button
         type="submit"
-        disabled={pending}
+        disabled={isPending}
         className="mt-1 rounded-lg bg-stone-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-stone-700 disabled:opacity-50"
       >
-        {pending ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
+        {isPending ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
       </button>
     </form>
   );

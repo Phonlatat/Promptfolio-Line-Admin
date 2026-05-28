@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { logout } from "@/app/login/actions";
 
 const adminLinks = [
   { href: "/admin", label: "Overview", exact: true },
@@ -15,7 +14,14 @@ const adminLinks = [
 
 export default function AdminNavbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+    router.refresh();
+  }
 
   return (
     <motion.header
@@ -70,14 +76,12 @@ export default function AdminNavbar() {
             </svg>
             ดูเว็บไซต์
           </Link>
-          <form action={logout}>
-            <button
-              type="submit"
-              className="rounded-md border border-stone-700 px-3 py-1.5 text-[13px] text-stone-400 transition-colors hover:border-stone-500 hover:text-stone-200"
-            >
-              ออกจากระบบ
-            </button>
-          </form>
+          <button
+            onClick={handleLogout}
+            className="rounded-md border border-stone-700 px-3 py-1.5 text-[13px] text-stone-400 transition-colors hover:border-stone-500 hover:text-stone-200"
+          >
+            ออกจากระบบ
+          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -134,11 +138,9 @@ export default function AdminNavbar() {
                 <Link href="/" onClick={() => setMenuOpen(false)} className="text-sm text-stone-500 transition-colors hover:text-stone-300">
                   ← ดูเว็บไซต์
                 </Link>
-                <form action={logout}>
-                  <button type="submit" className="text-sm text-stone-400 transition-colors hover:text-stone-200">
-                    ออกจากระบบ
-                  </button>
-                </form>
+                <button onClick={handleLogout} className="text-sm text-stone-400 transition-colors hover:text-stone-200">
+                  ออกจากระบบ
+                </button>
               </div>
             </div>
           </motion.div>

@@ -4,7 +4,8 @@ import { cookies } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { isAdmin, ADMIN_NAME } from "@/lib/auth";
+import { ADMIN_NAME } from "@/lib/auth";
+import { verifySession, COOKIE_NAME } from "@/lib/session";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const jar = await cookies();
-  const userId = jar.get("admin_session")?.value ?? "";
-  const username = isAdmin(userId) ? ADMIN_NAME : null;
+  const token = jar.get(COOKIE_NAME)?.value ?? "";
+  const session = token ? await verifySession(token) : null;
+  const username = session ? ADMIN_NAME : null;
 
   return (
     <html
