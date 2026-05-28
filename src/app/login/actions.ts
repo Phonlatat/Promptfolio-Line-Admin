@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { ADMIN_SESSION, verifyAdminCredentials } from "@/lib/auth";
+import { verifyAdminLogin } from "@/lib/auth";
 
 export async function login(
   _prevState: { error: string } | null,
@@ -11,10 +11,10 @@ export async function login(
   const username = formData.get("id") as string;
   const password = formData.get("password") as string;
 
-  const valid = await verifyAdminCredentials(username, password);
-  if (valid) {
+  const userId = await verifyAdminLogin(username, password);
+  if (userId) {
     const jar = await cookies();
-    jar.set("admin_session", ADMIN_SESSION, {
+    jar.set("admin_session", userId, {
       httpOnly: true,
       sameSite: "lax",
       maxAge: 60 * 60 * 8,

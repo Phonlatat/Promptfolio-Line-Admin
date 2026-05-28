@@ -5,7 +5,8 @@ import LoginForm from "./LoginForm";
 
 export default async function LoginPage() {
   const jar = await cookies();
-  if (isAdmin(jar.get("admin_session")?.value ?? "")) {
+  const sessionValue = jar.get("admin_session")?.value ?? "";
+  if (await isAdmin(sessionValue)) {
     redirect("/admin");
   }
 

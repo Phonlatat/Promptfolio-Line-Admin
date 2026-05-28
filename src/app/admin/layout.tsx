@@ -5,8 +5,8 @@ import { isAdmin } from "@/lib/auth";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const jar = await cookies();
-  const userId = jar.get("admin_session")?.value ?? "";
-  if (!isAdmin(userId)) {
+  const sessionValue = jar.get("admin_session")?.value ?? "";
+  if (!await isAdmin(sessionValue)) {
     redirect("/login");
   }
   return (
