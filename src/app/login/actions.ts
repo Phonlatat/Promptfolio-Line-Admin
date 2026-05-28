@@ -2,16 +2,17 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { ADMIN_SESSION, ADMIN_PASSWORD } from "@/lib/auth";
+import { ADMIN_SESSION, verifyAdminCredentials } from "@/lib/auth";
 
 export async function login(
   _prevState: { error: string } | null,
   formData: FormData
 ): Promise<{ error: string }> {
-  const id = formData.get("id") as string;
-  const pass = formData.get("password") as string;
+  const username = formData.get("id") as string;
+  const password = formData.get("password") as string;
 
-  if (id === ADMIN_SESSION && pass === ADMIN_PASSWORD) {
+  const valid = await verifyAdminCredentials(username, password);
+  if (valid) {
     const jar = await cookies();
     jar.set("admin_session", ADMIN_SESSION, {
       httpOnly: true,

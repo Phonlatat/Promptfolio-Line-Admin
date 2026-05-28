@@ -76,3 +76,12 @@ model Photo {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  displayName  String   @default("Admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
