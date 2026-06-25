@@ -15,12 +15,14 @@ export default function PhotoSlideshow({ slides }: { slides: Slide[] }) {
   const [paused, setPaused] = useState(false);
   const n = slides.length;
 
+  const [prevN, setPrevN] = useState(n);
+  if (n !== prevN) {
+    setPrevN(n);
+    setActive(0);
+  }
+
   const next = useCallback(() => setActive((p) => (p + 1) % n), [n]);
   const prev = useCallback(() => setActive((p) => (p - 1 + n) % n), [n]);
-
-  useEffect(() => {
-    setActive(0);
-  }, [n]);
 
   useEffect(() => {
     if (paused || n === 0) return;
